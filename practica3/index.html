@@ -1,0 +1,92 @@
+<html>
+    <head>
+
+        <title>Practica 3</title>
+
+    </head>
+
+    <body>
+
+        <h1>Guardando información </h1>
+
+
+
+
+    <script>
+
+/*Función para conseguir el parametro de la url*/
+
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function saveCookie(name,value) {
+         document.cookie = name+"="+value;
+
+        
+         }
+
+    
+    let id_session = getParameterByName("id");
+    
+
+    /* Funcion para almacenar cookies */ 
+    saveCookie("id_session",43243);
+ 
+//información de usuario para sessionStorage
+    let info= {
+
+        nombre: "Juan Perez",
+        telefono: "000000000",
+        email: "juan@dominio.com"
+
+
+    }    
+
+    let info_local= {
+
+tipo_usuario: "Admin",
+tipografia: "Arial",
+letra: "12px",
+colores: "#ccc"
+
+
+}   
+    
+    
+   //funcion para guardar sessionStorage
+
+   function setSStorage(inf){
+
+
+    sessionStorage.setItem("name",inf.nombre);
+    sessionStorage.setItem("phone",inf.telefono);
+    sessionStorage.setItem("email",inf.email);
+   }
+
+
+    //funcion para guardar localStorage
+
+    function setLStorage(inf){
+
+
+localStorage.setItem("tipography",inf.tipografia);
+localStorage.setItem("size",inf.letra);
+localStorage.setItem("color_theme",inf.colores);
+localStorage.setItem("User",inf.tipo_usuario);
+}
+
+   setSStorage(info);
+
+   setLStorage(info_local);
+
+    </script>
+    </body>
+
+
+
+
+</html>
